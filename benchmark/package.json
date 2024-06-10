@@ -1,0 +1,66 @@
+{
+  "name": "@loopback/benchmark",
+  "description": "Benchmarks measuring performance of our framework.",
+  "version": "6.0.2",
+  "keywords": [
+    "loopback",
+    "performance",
+    "benchmark"
+  ],
+  "private": true,
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "IBM Corp. and LoopBack contributors",
+  "copyright.owner": "IBM Corp. and LoopBack contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loopbackio/loopback-next.git",
+    "directory": "benchmark"
+  },
+  "engines": {
+    "node": "18 || 20 || 22"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "clean": "lb-clean dist *.tsbuildinfo",
+    "pretest": "npm run clean && npm run build",
+    "test": "lb-mocha \"dist/__tests__/**/*.js\"",
+    "prestart": "npm run build",
+    "benchmark:routing": "node ./dist/rest-routing/routing-table",
+    "benchmark:context": "node ./dist/context-binding/context-binding",
+    "start": "node ."
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/core": "^6.0.2",
+    "@loopback/example-todo": "^8.0.2",
+    "@loopback/openapi-spec-builder": "^7.0.2",
+    "@loopback/rest": "^14.0.2",
+    "@types/byline": "^4.2.36",
+    "@types/debug": "^4.1.12",
+    "@types/request-promise-native": "^1.0.21",
+    "autocannon": "^7.15.0",
+    "axios": "^1.7.2",
+    "benchmark": "^2.1.4",
+    "byline": "^5.0.0",
+    "debug": "^4.3.5",
+    "path-to-regexp": "^6.2.2",
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "@loopback/build": "^11.0.2",
+    "@loopback/testlab": "^7.0.2",
+    "@types/autocannon": "^7.12.5",
+    "@types/benchmark": "^2.1.5",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^16.18.98",
+    "mocha": "^10.4.0",
+    "source-map-support": "^0.5.21"
+  }
+}
